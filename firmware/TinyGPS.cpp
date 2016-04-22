@@ -24,8 +24,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "TinyGPS.h"
 #include <math.h>
 
-#define _GPRMC_TERM   "GPRMC"
-#define _GPGGA_TERM   "GPGGA"
+#define _GPRMC_TERM   "GPRMC"   //Time, date, position, course and speed data.
+//Recommended Minimum Navigation Information.
+#define _GPGGA_TERM   "GPGGA"  //Time, position and fix type data.
+#define _GPGSA_TERM   "GPSA"   //This was added by : Liam Altarac.  GPS receiver operating mode, active satellites
+//used in the position solution, and DOP values.
+#define _GPGSV_TERM   "GSV"   //This was added by: Liam Altarac. The number of GPS satellites in view satellite ID
+//numbers, elevation, azimuth, and SNR values.
+#define _GPVTG_TERM   "GPSA"   //This was added by: Liam Altarac.   Course and speed information relative to the
+//ground.
+
 
 // Converts degrees to radians.
 #define radians(angleDegrees) (angleDegrees * M_PI / 180.0)
