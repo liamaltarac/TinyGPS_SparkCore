@@ -44,6 +44,7 @@ public:
     GPS_INVALID_TIME = 0xFFFFFFFF,		 GPS_INVALID_SPEED = 999999999, 
     GPS_INVALID_FIX_TIME = 0xFFFFFFFF, GPS_INVALID_SATELLITES = 0xFF,
     GPS_INVALID_HDOP = 0xFFFFFFFF,     GPS_INVALID_VDOP = 0xFFFFFFFF,
+    GPS_INVALID_PDOP = 0xFFFFFFFF
     
   };
 
@@ -96,7 +97,7 @@ public:
 #endif
 
 private:
-  enum {_GPS_SENTENCE_GPGGA, _GPS_SENTENCE_GPRMC, _GPS_SENTENCE_OTHER};
+  enum {_GPS_SENTENCE_GPGGA, _GPS_SENTENCE_GPRMC, _GPS_SENTENCE_GPGSV, _GPS_SENTENCE_GPRMC, _GPS_SENTENCE_GPVTG, _GPS_SENTENCE_OTHER};
 
   // properties
   unsigned long _time, _new_time;
@@ -107,6 +108,8 @@ private:
   unsigned long  _speed, _new_speed;
   unsigned long  _course, _new_course;
   unsigned long  _hdop, _new_hdop;
+  unsigned long  _vdop, _new_vdop;
+  unsigned long  _pdop, _new_pdop;
   unsigned short _numsats, _new_numsats;
 
   unsigned long _last_time_fix, _new_time_fix;
