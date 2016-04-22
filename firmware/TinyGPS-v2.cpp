@@ -21,7 +21,7 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include "TinyGPS-v2.h"
+#include "TinyGPS.h"
 #include <math.h>
 
 #define _GPRMC_TERM   "GPRMC"   //Time, date, position, course and speed data.
@@ -77,7 +77,7 @@ TinyGPS-v2.h::TinyGPS()
 // public methods
 //
 
-bool TinyGPS-v2.h::encode(char c)
+bool TinyGPS::encode(char c)
 {
   bool valid_sentence = false;
 
@@ -120,7 +120,7 @@ bool TinyGPS-v2.h::encode(char c)
 }
 
 #ifndef _GPS_NO_STATS
-void TinyGPS-v2.h::stats(unsigned long *chars, unsigned short *sentences, unsigned short *failed_cs)
+void TinyGPS::stats(unsigned long *chars, unsigned short *sentences, unsigned short *failed_cs)
 {
   if (chars) *chars = _encoded_characters;
   if (sentences) *sentences = _good_sentences;
