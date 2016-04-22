@@ -217,7 +217,7 @@ bool TinyGPS::term_complete()
           _hdop      = _new_hdop;
           break;
           
-         case _GPS_SENTENCE_GPGSA:
+         case 3:
           _hdop      = _new_hdop;
           _vdop      = _new_vdop;
           _pdop      = _new_pdop;
