@@ -53,6 +53,8 @@ TinyGPS::TinyGPS()
   ,  _speed(GPS_INVALID_SPEED)
   ,  _course(GPS_INVALID_ANGLE)
   ,  _hdop(GPS_INVALID_HDOP)
+  ,  _vdop(GPS_INVALID_VDOP)
+  ,  _pdop(GPS_INVALID_PDOP)
   ,  _numsats(GPS_INVALID_SATELLITES)
   ,  _last_time_fix(GPS_INVALID_FIX_TIME)
   ,  _last_position_fix(GPS_INVALID_FIX_TIME)
@@ -214,6 +216,12 @@ bool TinyGPS::term_complete()
           _numsats   = _new_numsats;
           _hdop      = _new_hdop;
           break;
+          
+         case _GPS_SENTENCE_GPGSA:
+          _hdop      = _new_hdop;
+          _vdop      = _new_vdop;
+          _pdop      = _new_pdop;
+          break;
         }
 
         return true;
@@ -234,6 +242,10 @@ bool TinyGPS::term_complete()
       _sentence_type = _GPS_SENTENCE_GPRMC;
     else if (!gpsstrcmp(_term, _GPGGA_TERM))
       _sentence_type = _GPS_SENTENCE_GPGGA;
+    else if (!gpsstrcmp(_term, _GPGSV_TERM))
+      _sentence_type = _GPS_SENTENCE_GPGSV;  
+    else if (!gpsstrcmp(_term, _GPVTG_TERM))
+      _sentence_type = _GPS_SENTENCE_GPVTG;
     else
       _sentence_type = _GPS_SENTENCE_OTHER;
     return false;
@@ -290,6 +302,10 @@ bool TinyGPS::term_complete()
     case COMBINE(_GPS_SENTENCE_GPGGA, 9): // Altitude (GPGGA)
       _new_altitude = parse_decimal();
       break;
+    case COMBINE(_GPS_SENTENCE_GPGSA, 17):
+      _new_pdop = parse_decimal();
+    case COMBINE(_GPS_SENTENCE_GPGSA, 19):
+      _new_vdop = parse_decimal();      
   }
 
   return false;
