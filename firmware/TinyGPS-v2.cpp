@@ -21,7 +21,7 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include "TinyGPS.h"
+#include "TinyGPS-v2.h"
 #include <math.h>
 
 #define _GPRMC_TERM   "GPRMC"   //Time, date, position, course and speed data.
