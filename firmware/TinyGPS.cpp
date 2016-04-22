@@ -243,7 +243,9 @@ bool TinyGPS::term_complete()
     else if (!gpsstrcmp(_term, _GPGGA_TERM))
       _sentence_type = _GPS_SENTENCE_GPGGA;
     else if (!gpsstrcmp(_term, _GPGSV_TERM))
-      _sentence_type = _GPS_SENTENCE_GPGSV;  
+      _sentence_type = _GPS_SENTENCE_GPGSV;
+    else if (!gpsstrcmp(_term, _GPGSA_TERM))
+      _sentence_type = _GPS_SENTENCE_GPGSA;  
     else if (!gpsstrcmp(_term, _GPVTG_TERM))
       _sentence_type = _GPS_SENTENCE_GPVTG;
     else
