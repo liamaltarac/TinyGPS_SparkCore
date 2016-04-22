@@ -76,6 +76,12 @@ public:
   // horizontal dilution of precision in 100ths
   inline unsigned long hdop() { return _hdop; }
 
+  // Vertical dilution of precision in 100ths 
+  inline unsigned long vdop() { return _vdop; }
+  
+    // Position  dilution of precision in 100ths
+  inline unsigned long pdop() { return _pdop; }
+  
   void f_get_position(float *latitude, float *longitude, unsigned long *fix_age = 0);
   void crack_datetime(int *year, byte *month, byte *day, 
     byte *hour, byte *minute, byte *second, byte *hundredths = 0, unsigned long *fix_age = 0);
